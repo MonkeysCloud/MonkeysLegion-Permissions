@@ -1,0 +1,48 @@
+# Permissions Configuration
+# MonkeysLegion Framework — Permissions Package
+#
+# This file configures the RBAC, policies, and authorization behavior.
+
+permissions {
+    # Default super-admin role (has all permissions)
+    super_admin_role = ${PERMISSIONS_SUPER_ADMIN:-super-admin}
+
+    # Table names for the permissions system
+    tables {
+        roles            = ${PERMISSIONS_TABLE_ROLES:-perm_roles}
+        permissions      = ${PERMISSIONS_TABLE_PERMISSIONS:-perm_permissions}
+        user_roles       = ${PERMISSIONS_TABLE_USER_ROLES:-perm_user_roles}
+        user_permissions = ${PERMISSIONS_TABLE_USER_PERMISSIONS:-perm_user_permissions}
+        stored_rules     = ${PERMISSIONS_TABLE_STORED_RULES:-perm_stored_rules}
+        requests         = ${PERMISSIONS_TABLE_REQUESTS:-perm_permission_requests}
+    }
+
+    # Cache configuration
+    cache {
+        enabled = ${PERMISSIONS_CACHE_ENABLED:-true}
+        ttl     = ${PERMISSIONS_CACHE_TTL:-3600}
+        prefix  = ${PERMISSIONS_CACHE_PREFIX:-perm:}
+    }
+
+    # Request/Approval workflow
+    requests {
+        # Auto-approve requests from users with this role
+        auto_approve_role = ${PERMISSIONS_AUTO_APPROVE_ROLE:-admin}
+        # Notification channel for new requests
+        notify_channel = ${PERMISSIONS_NOTIFY_CHANNEL:-email}
+    }
+
+    # LDAP/SAML sync
+    sync {
+        # Default sync strategy: additive, replace, merge, intersect_local
+        strategy = ${PERMISSIONS_SYNC_STRATEGY:-additive}
+    }
+
+    # Apex AI integration (optional)
+    apex {
+        # Default confidence threshold for AI policy evaluation
+        confidence_threshold = ${PERMISSIONS_APEX_THRESHOLD:-0.7}
+        # Default model for AI evaluations (empty = provider default)
+        model = ${PERMISSIONS_APEX_MODEL:-}
+    }
+}

@@ -1,0 +1,47 @@
+includes:
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+
+parameters:
+    level: 9
+    paths:
+        - src
+        - tests
+    
+    scanFiles:
+        - ../apex/src/AI.php
+        - ../apex/src/DTO/Response.php
+        - ../apex/src/DTO/Message.php
+        - ../apex/src/DTO/Usage.php
+        - ../apex/src/DTO/Cost.php
+        - ../apex/src/DTO/ToolCall.php
+        - ../apex/src/Enum/Role.php
+        - ../apex/src/Enum/FinishReason.php
+        - ../apex/src/Contract/ProviderInterface.php
+        - ../apex/src/Contract/MiddlewareInterface.php
+        - ../apex/src/Cost/CostTracker.php
+        - ../apex/src/Cost/CostReport.php
+        - ../apex/src/Tool/ToolRegistry.php
+        - ../apex/src/Tool/ToolExecutor.php
+        - ../apex/src/Schema/Schema.php
+        - ../apex/src/Schema/SchemaCompiler.php
+        - ../apex/src/Schema/SchemaValidator.php
+        - ../apex/src/Streaming/TextStream.php
+        - ../apex/src/Guard/Guard.php
+        - ../apex/src/Pipeline/Pipeline.php
+        - ../apex/src/Agent/AgentBuilder.php
+        - ../apex/src/Agent/CrewBuilder.php
+        - ../apex/src/DTO/EmbeddingVector.php
+        - ../apex/src/Contract/GuardInterface.php
+        - ../apex/src/Enum/GuardAction.php
+        - ../apex/src/DTO/GuardResult.php
+        - ../apex/src/DTO/ToolResult.php
+        - ../apex/src/Exception/SchemaValidationException.php
+        - ../apex/src/Exception/GuardException.php
+        - ../cli/src/Console/Command.php
+        - ../cli/src/Console/Attributes/Command.php
+        - ../cli/src/Console/Traits/Cli.php
+        - ../cli/src/Console/Output/ProgressBar.php
+        - ../cli/src/Console/Output/Spinner.php
+        - ../cli/src/Console/Output/TableRenderer.php
+    
+    tmpDir: var/cache/phpstan
